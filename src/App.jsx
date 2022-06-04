@@ -13,31 +13,37 @@ import Faqs from './components/pages/faq';
 import Capacitate from './components/pages/capacitate';
 import Contacto from './components/pages/contacto';
 import Productos from './components/pages/productos';
+import AppContext from './context/AppContext';
+import useInitialState from './hooks/useInitialState';
 
 function App () {
 
+  const initialState = useInitialState();
+
   return (
-    <div id='page-container'>
-      <Router>
-        <ScrollToTop />
-        <Navbar/>
-        <div id="content-wrap">
-          <Routes>
-            <Route path="/" element={<Home/>}></Route>
-            <Route path="producto/:productId" element={<ProductDetail />}></Route>
-            <Route path="categoria/:categoryId" element={<CategoryDetail />}></Route>
-            <Route path="categorias" element={<Categoria />}></Route>
-            <Route path="quienes-somos" element={<QuienesSomos />}></Route>
-            <Route path="contacto" element={<Contacto />}></Route>
-            <Route path="clientes" element={<Categoria />}></Route>
-            <Route path="faq" element={<Faqs />}></Route>
-            <Route path="capacitate" element={<Capacitate />}></Route>
-            <Route path="catalogo" element={<Productos />}></Route>
-          </Routes>
-        </div>
-        <Footer />
-      </Router>
-    </div>
+    <AppContext.Provider value={initialState}>
+      <div id='page-container'>
+        <Router>
+          <ScrollToTop />
+          <Navbar/>
+          <div id="content-wrap">
+            <Routes>
+              <Route path="/" element={<Home/>}></Route>
+              <Route path="producto/:productId" element={<ProductDetail />}></Route>
+              <Route path="categoria/:categoryId" element={<CategoryDetail />}></Route>
+              <Route path="categorias" element={<Categoria />}></Route>
+              <Route path="quienes-somos" element={<QuienesSomos />}></Route>
+              <Route path="contacto" element={<Contacto />}></Route>
+              <Route path="clientes" element={<Categoria />}></Route>
+              <Route path="faq" element={<Faqs />}></Route>
+              <Route path="capacitate" element={<Capacitate />}></Route>
+              <Route path="catalogo" element={<Productos />}></Route>
+            </Routes>
+          </div>
+          <Footer />
+        </Router>
+      </div>
+    </AppContext.Provider>
   )
 }
 

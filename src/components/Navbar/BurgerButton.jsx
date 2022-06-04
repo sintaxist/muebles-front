@@ -85,10 +85,10 @@ p{
 }
 .open{
   span{
-    background: #474DEF;
+    background: #D93535;
   }
   p{
-    color: #474DEF;
+    color: #D93535;
   }
 }
 `

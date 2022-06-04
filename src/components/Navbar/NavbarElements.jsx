@@ -3,15 +3,42 @@ import styled from 'styled-components';
 
 export const Header = styled.header`
   position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
   z-index: 99;
   top: 0;
-  padding: 20px 3%;
+  padding: 0px 3%;
   width: 94%;
-  background: green;
+  height: 80px;
+  background: #D93535;
+  &:after{
+    content: '';
+    background: #F9FBFF;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 25%;
+    max-width: 325px;
+  }
+  @media (max-width:1200px){
+    &:after{
+      max-width: 55px;
+    }
+  }
+  @media(max-width:960px){
+    &:after{
+      display: none;
+      max-width: 55px;
+    }
+  }
 `
 
 export const NavContainer = styled.nav`
   width: 100%;
+  height: 100%;
   max-width: 1300px;
   margin: auto;
   display: flex;
@@ -81,10 +108,10 @@ export const NavLink = styled(Link)`
     font-size: 1rem;
     margin: auto;
     margin-bottom: 15px;
-    color: #474DEF;
+    color: #D93535;
     &:before{
       height: 3px;
-      background: linear-gradient(45deg, #474DEF, #01d8fb);
+      background: linear-gradient(45deg, #D93535, #ff0962);
     }
   }
 `;
@@ -179,5 +206,17 @@ export const Menu = styled.div`
   }
   @media(max-width:550px){
     top: 7px;
+  }
+`
+
+export const SectionMenu = styled.div`
+  background: #F9FBFF;
+  padding: 0px 23px 0px 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 100%;
+  @media(max-width:960px){
+    background: transparent;
   }
 `

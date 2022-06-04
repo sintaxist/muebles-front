@@ -9,7 +9,7 @@ export function ProductCard({product}){
     // console.log()
     return(
         <div className={styles.card}>
-            <img src={urlAdmin + product.attributes.image.data.attributes.url} alt="product" />
+            {<img src={urlAdmin + product.attributes.image.data.attributes.url} alt="product" />}
             <div>
                 <h3>{product.attributes.name}</h3>
                 <p>

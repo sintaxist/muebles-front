@@ -19,6 +19,21 @@ body{
   padding-bottom: 24rem;    /* Footer height */
   margin-top: -81px;
 }
+.cart{
+  position: relative;
+  z-index: 5;
+  stroke: $orange;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  transition: transform .3s;
+  &:hover{
+    transform: scale(1.4);
+  }
+  @media (max-width:960px) {
+    stroke: $white;
+  }
+}
 .other{
   background: $orange;
   background: linear-gradient(-45deg, $orange, $red);
@@ -397,6 +412,11 @@ section{
 }
 .hidden{
   overflow: hidden;
+}
+@media (max-width:960px) {
+  .cart{
+    margin-right: 60px;
+  }
 }
 @media (max-width:550px) {
   .secondPa{
