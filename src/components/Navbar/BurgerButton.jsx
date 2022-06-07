@@ -28,10 +28,17 @@ const Burguer = styled.div`
   left: -45px;
   width: 35px;
   height: 30px;
+  @media (max-width:550px) {
+    top: -5px;
+    left: 0px;
+  }
 }
 p{
   color: #fff;
   transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+  @media (max-width:550px) {
+    display: none;
+  }
 }
 .nav-icon-5{
   width: 35px;

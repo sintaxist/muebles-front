@@ -3,12 +3,11 @@ import AppContext from '../../context/AppContext';
 import { Content } from '../utils/UseElements'
 
 function Home () {
-
+  
   const { addToCart } = useContext(AppContext);
 
-  const handleClick = item => {
+  const addItem = (item) => {
     addToCart(item)
-    console.log('agregaste ' + item)
   }
 
   return (
@@ -18,7 +17,7 @@ function Home () {
         <div key={producto.id}>
           <h1>{producto.name}</h1>
           <p>{producto.description}</p>
-          <button onClick={() => handleClick(producto.name)}>agregar al carrito</button>
+          <button onClick={() => addItem(producto)}>agregar al carrito</button>
         </div>
       ))}
     </Content>

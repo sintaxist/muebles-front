@@ -34,6 +34,7 @@ input[type="text"] {
     outline: none;
   }
   @media (max-width:960px) {
+    margin-left: 0px;
     color: $white;
     &.active{
       border-bottom: 2px solid $white;
@@ -80,13 +81,8 @@ input[type="text"] {
       }
     }
     &:hover{
-      background-color: $white;
+      background-color: initial;
       transform: scale(1);
-      svg{
-        path{
-          stroke: $orange;
-        }
-      }
     }
   }
 }

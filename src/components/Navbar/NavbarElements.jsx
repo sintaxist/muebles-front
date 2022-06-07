@@ -55,7 +55,7 @@ export const LinksMobile = styled.div`
   text-align: center;
   transition: all .5s ease;
   display: block;
-  z-index: 3;
+  z-index: 4;
  
   @media(min-width: 960px){
     position: initial;
@@ -159,7 +159,7 @@ export const BgDiv = styled.div`
   right: -1000px;
   width: 1200px;
   height: 1200px;
-  z-index: 1;
+  z-index: 3;
   border-radius: 50%;
   transition: all .6s ease;
   box-shadow: 0 0 20px rgb(0, 0, 0, 25%);
@@ -199,7 +199,7 @@ export const Overlay = styled.div`
 export const Menu = styled.div`
   display: none;
   position: relative;
-  z-index: 2;
+  z-index: 4;
   @media(max-width:960px){
     display: block;
     top: 5px;
@@ -218,5 +218,8 @@ export const SectionMenu = styled.div`
   height: 100%;
   @media(max-width:960px){
     background: transparent;
+  }
+  @media(max-width:960px){
+    padding: 0px;
   }
 `
