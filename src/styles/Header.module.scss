@@ -1,5 +1,30 @@
 @import './variables.scss';
 
+.header{
+    // background-color: #6AD8FB;
+    transition: top .1s;
+    &.active{
+      box-shadow: 0px 9px 20px #00000050;
+      &:before{
+        opacity: 1;
+      }
+    }
+    &:before{
+      content: '';
+      background: $gradient-3;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+  }
+.disappear{
+  display: none !important;
+}
 .cart{
     position: relative;
     width: 25px;
@@ -45,4 +70,202 @@
         background-color: $white;
         color: $orange;
     }
+}
+.subMenu{
+  text-transform: uppercase;
+  position: relative;
+  p{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    width: fit-content;
+    text-align: center;
+    padding: 10px 15px;
+    transition: all .3s;
+    font-size: .8rem;
+    position: relative;
+    margin: auto;
+    &:before{
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      height: 2px;
+      background: #fff;
+      width: 100%;
+      transform-origin: center;
+      transform: scaleX(0);
+      transition: all .3s;
+      border-radius: 50px;
+    }
+    @media(max-width: 960px){
+      font-size: 1rem;
+      margin: auto;
+      margin-bottom: 15px;
+      color: #D93535;
+      &:before{
+        height: 3px;
+        background: linear-gradient(45deg, #D93535, #ff0962);
+      }
+    }
+  }
+  &::before{
+    height: 32px;
+    width: 100%;
+    background-color: transparent;
+    display: block;
+    position: absolute;
+    bottom: -21px;
+    content: '';
+  }
+  &:hover{
+    p{
+      &:before{
+          transform: scaleY(1);
+      }
+    }
+    ul{
+      opacity: 1;
+      transform: scaleY(1);
+      bottom: -131px;
+      height: max-content;
+      li{
+        display: block;
+      }
+    }
+  }
+}
+.fatherItem{
+  padding-inline-start: 0px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: -171px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  // transform: scale(0);
+  height: 0px;
+  z-index: -1;
+  opacity: 0;
+  transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform-origin: bottom;
+}
+.itemMenu{
+  list-style: none;
+  text-align: center;
+  box-shadow: 0px 9px 20px #00000010;
+  display: none;
+  width: max-content;
+  a{
+    display: block;
+    background-color: $white;
+    text-decoration: none;
+    color: $orange;
+    font-weight: bold;
+    margin: auto;
+    text-align: center;
+    width: 180px;
+    padding: 15px 25px;
+    transition: background-color .3s;
+    &:hover{
+      background-color: #ffe1e1;
+    }
+  }
+}
+.subMenuMobile{
+  text-transform: uppercase;
+  position: relative;
+  p{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    width: fit-content;
+    text-align: center;
+    padding: 10px 15px;
+    transition: all .3s;
+    font-size: .8rem;
+    position: relative;
+    margin: auto;
+    &:before{
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      height: 2px;
+      background: #fff;
+      width: 100%;
+      transform-origin: center;
+      transform: scaleX(0);
+      transition: all .3s;
+      border-radius: 50px;
+    }
+    span{
+      display: block;
+      margin-left: 10px;
+    }
+    @media(max-width: 960px){
+      font-size: 1rem;
+      margin: auto;
+      margin-bottom: 15px;
+      color: #D93535;
+      &:before{
+        height: 3px;
+        background: linear-gradient(45deg, #D93535, #ff0962);
+      }
+    }
+  }
+  &:hover{
+    p{
+      &:before{
+          transform: scaleY(1);
+      }
+    }
+  }
+}
+.linksMobile{
+  transition: height .3s;
+  list-style: none;
+  padding-inline-start: 0px;
+  height: 0px;
+  overflow: hidden;
+  li{
+    margin-bottom: 15px;
+    a{
+      text-transform: capitalize;
+      text-decoration: none;
+      color: $orange;
+      position: relative;
+      &:before{
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        height: 2px;
+        background: $orange;
+        width: 100%;
+        transform-origin: center;
+        transform: scaleX(0);
+        transition: all .3s;
+        border-radius: 50px;
+      }
+      &:hover{
+        &:before{
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}
+.showAcordion{
+  height: max-content !important;
 }

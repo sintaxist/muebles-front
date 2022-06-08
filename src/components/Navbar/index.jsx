@@ -19,29 +19,38 @@ import styles from '../../styles/Header.module.scss';
 
 import { getContent, urlAdmin } from '../utils/httpClient';
 import AppContext from '../../context/AppContext'
-import { Search } from '../search';
+import { Search } from './search';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
 
-  const [content, setContent] = useState([]);
-
+  //Context App Carrito de Compras
   const { state } = useContext(AppContext);
 
+  //Consumir API
+  const [content, setContent] = useState([]);
   useEffect(() => {
-    getContent('header?populate=*').then((data) => {
+    getContent('header?populate=image,imgMobile,links.sublinks').then((data) => {
       setContent(data)
     });
 
   }, [])
 
+  // Mostrar Menu
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
-    //cuando esta true lo pasa a false y vice versa
     setClicked(!clicked)
   }
 
+  // Mostrar Buscador
+  const [input, setInput] = useState(false);
+
+  const showSearch = () => {
+    setInput(!input)
+  }
+
+  //Header functions (scroll hidden & Change styles)
   let lastScrollTop = 0;
 
   const chageHeader = () => {
@@ -67,36 +76,79 @@ function Navbar() {
 
   window.addEventListener('scroll', chageHeader);
 
+  // Acordeon menu mobile
+
+  const [selected, setSelected] = useState(null);
+
+  const toggle = (i) => {
+    if (selected === i) {
+      return setSelected(null)
+    }
+
+    setSelected(i)
+  }
+
+  //Retorno de la funcion
   return (
-    <Header id='header' className='header'>
+    <Header id='header' className={styles.header}>
       <NavContainer className='widthBreak'>
 
-        <LogoLink to='/'>
+        <LogoLink to='/' className={`${input ? styles.disappear : ''}`}>
           <Logo src={urlAdmin + content?.data?.attributes.image.data.attributes.url} alt="logo" />
           <LogoMobile src={urlAdmin + content?.data?.attributes.imgMobile.data.attributes.url} alt="logo-mobile" />
         </LogoLink>
 
-        <LinkContainer>
+        <LinkContainer className={`${input ? styles.disappear : ''}`}>
           {content?.data?.attributes.links.data.map(link => (
-            <NavLink key={link.id} to={link.attributes.link}>
-              {link.attributes.linkName}
-            </NavLink>
+            !link.attributes.Submenu ? (
+              <NavLink key={link.id} to={link.attributes.link}>
+                {link.attributes.linkName}
+              </NavLink>
+            ) : (
+              <div className={styles.subMenu} key={link.id}>
+                <p>{link.attributes.linkName}</p>
+                <ul className={styles.fatherItem}>
+                  {link.attributes.sublinks?.data.map(sublink => (
+                    <li key={sublink.id} className={styles.itemMenu}>
+                      <Link to={sublink.attributes.link}>{sublink.attributes.linkName}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
           ))}
         </LinkContainer>
 
         <LinksMobile className={`${clicked ? 'active' : ''}`}>
           <NavLink to='/' onClick={handleClick}>inicio</NavLink>
-          {content?.data?.attributes.links.data.map(link => (
-            <NavLink key={link.id} to={link.attributes.link} onClick={handleClick}>
-              {link.attributes.linkName}
-            </NavLink>
+          {content?.data?.attributes.links.data.map((link, i) => (
+            !link.attributes.Submenu ? (
+              <NavLink key={link.id} to={link.attributes.link} onClick={handleClick}>
+                {link.attributes.linkName}
+              </NavLink>
+            ) : (
+              <div className={styles.subMenuMobile} key={link.id} onClick={() => toggle(i)}>
+                <p>
+                  {link.attributes.linkName}
+                  <span>{selected === i ? '-' : '+'}</span>
+                </p>
+                <ul className={selected === i ? `${styles.showAcordion} ${styles.linksMobile}` : styles.linksMobile}>
+                  {link.attributes.sublinks?.data.map(sublink => (
+                    <li key={sublink.id}>
+                      <Link to={sublink.attributes.link} onClick={handleClick}>{sublink.attributes.linkName}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
           ))}
         </LinksMobile>
 
         <SectionMenu>
-          <Search />
 
-          <Link to='cart' className={styles.cart}>
+          <Search input={input} showSearch={showSearch}/>
+
+          <Link to='cart' className={`${styles.cart} ${input ? styles.disappear : ''}`}>
             {state.cart.length > 0 ? <div className={styles.item}>{state.cart.length}</div> : null }
             <svg className={styles.cartSvg} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M24 23H8.56185C8.32766 23 8.1009 22.9178 7.9211 22.7678C7.7413 22.6177 7.61987 22.4093 7.57797 22.1789L4.2402 3.82112C4.19831 3.5907 4.07688 3.3823 3.89708 3.23225C3.71728 3.08219 3.49052 3 3.25633 3H1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
@@ -106,15 +158,15 @@ function Navbar() {
             </svg>
           </Link>
 
-          <Menu className='burguer'>
+          <Menu className={`${input ? styles.disappear : ''}`}>
             <BurguerButton clicked={clicked} handleClick={handleClick} />
           </Menu>
           
         </SectionMenu>
 
-        <BgDiv className={`initial ${clicked ? ' active' : ''}`}></BgDiv>
+        <BgDiv className={`${clicked ? ' active' : ''}`}></BgDiv>
 
-        <Overlay className={`initial ${clicked ? ' active' : ''}`} onClick={handleClick}></Overlay>
+        <Overlay className={`${clicked ? ' active' : ''}`} onClick={handleClick}></Overlay>
 
       </NavContainer>
 

@@ -211,7 +211,7 @@ export const Menu = styled.div`
 
 export const SectionMenu = styled.div`
   background: #F9FBFF;
-  padding: 0px 23px 0px 15px;
+  padding: 0px 0px 0px 15px;
   display: flex;
   align-items: center;
   gap: 15px;

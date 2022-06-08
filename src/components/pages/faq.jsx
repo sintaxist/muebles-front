@@ -8,8 +8,7 @@ import { Content } from '../utils/UseElements';
 
 export default function Faqs() {
 
-  const [selected, setSelected] = useState(null)
-  const [content, setContent] = useState(null);
+  const [selected, setSelected] = useState(null);
 
   const toggle = (i) => {
     if (selected === i) {
@@ -19,6 +18,8 @@ export default function Faqs() {
     setSelected(i)
   }
 
+  const [content, setContent] = useState(null);
+  
   useEffect(() => {
     getContent('faq?populate=titulo.show,question').then((data) => {
       setContent(data)
@@ -35,7 +36,7 @@ export default function Faqs() {
           <h1 className={`title h1-title ${info?.titulo.color}`}>{info?.titulo.titulo}</h1>
         ) : null}
         <ReactMarkdown className={styles.p}>{info?.description}</ReactMarkdown>
-        {/* <p>¿Tienes alguna duda? revisa nuestra seccion de FAQ´s o escríbenos por medio de nuestro formulario de <Link className="a-color" to="contacto">contacto</Link> o envía un correo a <a className="a-color" href="mailto:contacto@curveball.mx">farlim@correo.com</a></p> */}
+    
         <div className={styles.accordion}>
           {
             info?.question.map((item, i) => {
