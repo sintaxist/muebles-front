@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import './variables.scss';
+
+*{
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+body{
+  background-color: $white;
+  margin-top: 81px;
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+#content-wrap {
+  overflow: hidden;
+  // padding-top: 60px;
+  padding-bottom: 24rem;    /* Footer height */
+  margin-top: -81px;
+}
+.other{
+  background: $orange;
+  background: linear-gradient(-45deg, $orange, $red) !important;
+  box-shadow: 0px 9px 20px #00000050;
+}
+.marginTop{
+  margin-top: 80px !important;
+}
+.margin140{
+  margin-top: 140px !important;
+  // @media (max-width:960px) {
+  //   margin-top: 90px !important;
+  // }
+}
+h1{
+  font-size: var(--font1);
+}
+p{
+  color: $black;
+  font-size: var(--font6);
+}
+.title{
+  text-transform: uppercase;
+}
+.colorwhite{
+  color: $white;
+}
+.white-div{
+  background-color: #fff;
+  text-align: center;
+  padding: 30px 3%;
+  width: 17%;
+  box-shadow: 0px 0px 20px #00000020;
+  z-index: 2;
+}
+.h1-title{
+  font-size: var(--font0);
+  @media (max-width:550px) {
+    font-size: var(--font1);
+  }
+}
+.h2-title{
+  font-size: var(--font2);
+  @media (max-width:550px) {
+    font-size: var(--font3);
+  }
+}
+.title{
+  &.purple{
+    color: $purple;
+  }
+  &.white{
+    color: $white;
+  }
+  &.blue{
+    color: $black;
+  }
+  &.gradient{
+    background: linear-gradient(to right, #19019C 0%, #6AD8FB 45%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+.title-before{
+  position: relative;
+  &.purple{
+    color: $purple;
+    &::before{
+      background-color: $purple;
+    }
+  }
+  &.white{
+    color: $white;
+    &::before{
+      background-color: $white;
+    }
+  }
+  &.blue{
+    color: $black;
+    &::before{
+      background-color: $black;
+    }
+  }
+  &.gradient{
+    background: linear-gradient(to right, #19019C 0%, #6AD8FB 45%);
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    &::before{
+      background-color: linear-gradient(to right, #19019C 0%, #6AD8FB 45%);
+    }
+  }
+  &:before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 3px;
+    border-radius: 50px;
+    left: 0;
+    bottom: 0px;
+    margin: auto;
+  }
+}
+.fill{
+  &.white{
+    border: none;
+    background-color: $white !important;
+    color: $black;
+    box-shadow: 0 0 25px $black;
+    svg{
+      path{
+        stroke: $black;
+      }
+    }
+    &:hover{
+      box-shadow: 0 0 45px $black;
+    }
+  }
+  &.blue{
+    border-color: $black;
+    color: $white;
+    background-color: $black !important;
+    svg{
+      path{
+        stroke: $white;
+      }
+    }
+    &:hover{
+      box-shadow: 0 0 25px $black;
+  
+    }
+  }
+  &.blue2{
+    border-color: $blue;
+    color: $white;
+    background-color: $blue !important;
+    svg{
+      path{
+        stroke: $white;
+      }
+    }
+    &:hover{
+      box-shadow: 0 0 25px $blue;
+    }
+  }
+  &.purple{
+    border-color: $purple;
+    color: $white;
+    background-color: $purple !important;
+    svg{
+      path{
+        stroke: $white;
+      }
+    }
+    &:hover{
+      box-shadow: 0 0 25px $purple;
+    }
+  }
+  &.gradient{
+    color: $white;
+    border: none;
+    background-size: 300% 100%;
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    box-shadow: 0 0px 25px 0 rgba(116, 79, 168, 0.75);
+    svg{
+      path{
+        stroke: $white;
+      }
+    }
+    &:hover{
+      box-shadow: 0 0px 35px 0 rgba(116, 79, 168, 1);
+      background-position: 100% 0;
+    }
+  }
+}
+.outline{
+  &.white{
+    border-color: $white;
+    color: $white;
+    background-color: transparent !important;
+    svg{
+      path{
+        stroke: $white;
+      }
+    }
+    &:hover{
+      box-shadow: 0 0 25px $white;
+    }
+  }
+  &.purple{
+    border-color: $purple;
+    color: $purple;
+    background-color: transparent !important;
+    svg{
+      path{
+        stroke: $purple;
+      }
+    }
+    &:hover{
+      box-shadow: 0 0 25px $purple;
+    }
+  }
+  &.blue{
+    border-color: $black;
+    color: $black;
+    background-color: transparent !important;
+    svg{
+      path{
+        stroke: $black;
+      }
+    }
+    &:hover{
+      box-shadow: 0 0 25px $black;
+    }
+  }
+  &.blue2{
+    border-color: $blue;
+    color: $blue;
+    background-color: transparent !important;
+    svg{
+      path{
+        stroke: $blue;
+      }
+    }
+    &:hover{
+      box-shadow: 0 0 25px $blue;
+    }
+  }
+  &.gradient{
+    border-radius: 0px !important;
+    border-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7) 2;
+    color: #764ba2;
+    background-color: transparent !important;
+    box-shadow: 0 0px 25px 0 rgba(116, 79, 168, 0.75);
+    svg{
+      path{
+        stroke: #765ba2;
+      }
+    }
+    &:hover{
+      border-radius: 0px !important;
+      border-image: linear-gradient(to right, #764ba2 ,#8E37D7, #6B8DD6, #667eea,) 2;
+      box-shadow: 0 0px 35px 0 rgba(116, 79, 168, 1);
+    }
+  }
+}
+.li{
+  &.white{
+    color: $white;
+    &:before{
+      background: url('../images/circle-check.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+  }
+  &.blue{
+    color: $blue;
+  }
+}
+#testimonials{
+  .owl-dots{
+    margin-top: -30px;
+    @media (max-width:550px) {
+      margin-top: 0px;
+    }
+  }
+  .owl-theme .owl-dots .owl-dot span{
+    background: $orange;
+    border: 1px solid $orange;
+    margin: 0px 15px;
+    transform: scale(1.3);
+    transition: transform .3s ease-in-out, background .3s ease-in-out;
+  }
+  .owl-theme .owl-dots .owl-dot.active span{
+    transform: scale(2);
+    background: transparent;
+  }
+  .owl-theme .owl-dots .owl-dot:hover span{
+    background: transparent;
+  }
+}
+#sliderHome{
+  position: relative;
+  .owl-dots{
+    position: relative;
+    z-index: 1;
+    margin-top: -50px;
+    .owl-dot{
+      margin: 0px 10px;
+      &.active{
+        span{
+          background: transparent;
+          transform: scale(2);
+        }
+      }
+      span{
+        transform: scale(1.5);
+        background: $white;
+        border: 1px $white solid;
+        transition: all .3s;
+        &:hover{
+          background: transparent;
+        }
+      }
+    }
+  }
+}
+.linkHome{
+  margin: auto;
+  @media (max-width:550px) {
+    width: 92% !important;
+    padding: 0 !important;
+  }
+}
+.linkProd{
+  margin: auto;
+}
+@media (max-width:960px) {
+  .cart{
+    margin-right: 60px;
+  }
+}
+@media (max-width:550px) {
+  .secondPa{
+    padding-top: 30px !important;
+  }
+}

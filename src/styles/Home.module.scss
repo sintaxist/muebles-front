@@ -1,0 +1,116 @@
+@import 'variables.scss';
+
+.slide{
+    width: 100vw;
+    height: 70vh;
+    min-height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.containerSlide{
+    margin: 0px 6%;
+    h1{
+        font-family: $style-font;
+        font-size: var(--fontTitle);
+        margin-bottom: var(--margin-30);
+    }
+}
+.h2Slide{
+    p{
+        color: $white;
+        font-size: var(--font3);
+    }
+}
+.promociones{
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--margin-30);
+}
+.imgContainer{
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    .imgMobile{
+        position: absolute;
+        inset: 0;
+        display: none;
+    }
+    img{
+        margin: auto;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-position: center;
+        transition: width .3s ease-in-out, height .3s ease-in-out;
+    }
+    &:hover{
+        img{
+            width: 105%;
+            height: 105%;
+        }
+    }
+}
+.img60{
+    width: calc(70% - 15px);
+    @media (max-width:960px) {
+        width: 100%;
+    }
+}
+.img30{
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin-30);
+    width: calc(30% - 15px);
+    height: 500px;
+    .imgContainer{
+        height: 50%;
+    }
+    @media (max-width:960px) {
+        width: 100%;
+    }
+}
+.testimonials{
+    position: relative;
+    h2{
+        font-family: $style-font;
+        text-align: center;
+        font-size: var(--font2);
+    }
+    &:before{
+        content: '';
+        width: 100px;
+        height: 100px;
+        background: url('../images/comillas.svg') no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+    }
+}
+.sliderContain{
+    margin: var(--margin-60) 0px;
+}
+.review{
+    display: block;
+    margin: 6%;
+    q{
+        display: block;
+        font-size: var(--font5);
+        text-align: center;
+        margin: auto;
+    }
+    span{
+        text-align: center;
+        color: $orange;
+        font-size: var(--font6);
+        font-weight: bold;
+        text-transform: uppercase;
+        display: block;
+        margin-top: var(--margin-60);
+    }
+}
