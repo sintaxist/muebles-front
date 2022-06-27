@@ -17,7 +17,7 @@ import {
 
 import styles from '../../styles/Header.module.scss';
 
-import { getContent, urlAdmin } from '../utils/httpClient';
+import { getContent, urlAdmin } from '../../hooks/httpClient';
 import AppContext from '../../context/AppContext'
 import { Search } from './search';
 import { Link } from 'react-router-dom';
@@ -68,9 +68,9 @@ function Navbar() {
     lastScrollTop = scrollTop;
 
     if (window.scrollY >= 80) {
-      header.classList.add('active')
+      header.classList.add(`${styles.active}`)
     } else {
-      header.classList.remove('active')
+      header.classList.remove(`${styles.active}`)
     }
   }
 
@@ -99,8 +99,8 @@ function Navbar() {
         </LogoLink>
 
         <LinkContainer className={`${input ? styles.disappear : ''}`}>
-          {content?.data?.attributes.links.data.map(link => (
-            !link.attributes.Submenu ? (
+        {content?.data?.attributes?.links.data.map(link => (
+            !link.attributes?.Submenu ? (
               <NavLink key={link.id} to={link.attributes.link}>
                 {link.attributes.linkName}
               </NavLink>
@@ -121,7 +121,7 @@ function Navbar() {
 
         <LinksMobile className={`${clicked ? 'active' : ''}`}>
           <NavLink to='/' onClick={handleClick}>inicio</NavLink>
-          {content?.data?.attributes.links.data.map((link, i) => (
+          {content?.data?.attributes?.links.data.map((link, i) => (
             !link.attributes.Submenu ? (
               <NavLink key={link.id} to={link.attributes.link} onClick={handleClick}>
                 {link.attributes.linkName}
@@ -144,7 +144,7 @@ function Navbar() {
           ))}
         </LinksMobile>
 
-        <SectionMenu>
+        <SectionMenu className={styles.sectionMenu}>
 
           <Search input={input} showSearch={showSearch}/>
 

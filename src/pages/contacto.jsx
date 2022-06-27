@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import { getContent } from '../utils/httpClient';
-import { Content } from '../utils/UseElements';
+import { getContent } from '../hooks/httpClient';
+import { Content } from '../components/UseElements';
 
-import styles from '../../styles/formsPage.module.scss';
-import CapacitateForm from '../form/Form2';
+import styles from '../styles/formsPage.module.scss';
+import PostForm from '../components/form';
 
-export default function Capacitate(){
+export default function Contacto(){
 
     const [content, setContent] = useState(null);
 
     useEffect(() => {
-        getContent('capacitate?populate=title1.show,title2.show,telefono,correo').then((data) => {
+        getContent('contacto?populate=title1.show,title2.show,telefono,correo').then((data) => {
             setContent(data)
         })
     }, [])
@@ -21,6 +21,7 @@ export default function Capacitate(){
 
     return(
         <>
+            {/* <Loader/> */}
             <Content className='margin100'>
                 {info?.title1.show ? (
                     <h1 className={`title h1-title ${info?.title1.color}`}>{info?.title1.titulo}</h1>
@@ -30,7 +31,7 @@ export default function Capacitate(){
                 ):null}
              </Content>
             <div className={styles.back}>
-                <Content className={styles.section}>
+                <Content className={styles.section2}>
                     <div className={styles.info}>
                         <p>{info?.description}</p>
                         {info?.telefono.length >= 0 ? (
@@ -54,9 +55,11 @@ export default function Capacitate(){
                             </div>
                         ):null}
                     </div>
+
                     {info?.showForm ? (
-                        <CapacitateForm/>
+                        <PostForm/>
                     ):null}
+                    
                 </Content>
             </div>
         </>

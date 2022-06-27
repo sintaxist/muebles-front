@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 @import './variables.scss';
 
 *{
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin: 0;
 }
 body{
@@ -21,11 +21,11 @@ body{
 }
 .other{
   background: $orange;
-  background: linear-gradient(-45deg, $orange, $red);
+  background: linear-gradient(-45deg, $orange, $red) !important;
   box-shadow: 0px 9px 20px #00000050;
 }
-.margin100{
-  margin-top: 70px !important;
+.marginTop{
+  margin-top: 80px !important;
 }
 .margin140{
   margin-top: 140px !important;
@@ -278,21 +278,51 @@ p{
   }
 }
 #testimonials{
-  // background-color: #2D37B3;
-  .owl-theme .owl-dots .owl-dot span{
-    background: transparent;
-    margin: 0px 15px;
-    border: 1px solid transparent;
-    border-image: linear-gradient(to right, #764ba2 ,#8E37D7, #6B8DD6, #667eea,) 2;
-    transition: all .4s;
+  .owl-dots{
+    margin-top: -30px;
+    @media (max-width:550px) {
+      margin-top: 0px;
+    }
   }
-  .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{
+  .owl-theme .owl-dots .owl-dot span{
+    background: $orange;
+    border: 1px solid $orange;
+    margin: 0px 15px;
+    transform: scale(1.3);
+    transition: transform .3s ease-in-out, background .3s ease-in-out;
+  }
+  .owl-theme .owl-dots .owl-dot.active span{
     transform: scale(2);
-    border-radius: 50px;
-    border-image: none;
-    border: 1px solid transparent;
-    background: linear-gradient(to right, #764ba2 , #667eea);
-    box-shadow: 0 2px 25px 2px rgba(116, 79, 168, 1);
+    background: transparent;
+  }
+  .owl-theme .owl-dots .owl-dot:hover span{
+    background: transparent;
+  }
+}
+#sliderHome{
+  position: relative;
+  .owl-dots{
+    position: relative;
+    z-index: 1;
+    margin-top: -50px;
+    .owl-dot{
+      margin: 0px 10px;
+      &.active{
+        span{
+          background: transparent;
+          transform: scale(2);
+        }
+      }
+      span{
+        transform: scale(1.5);
+        background: $white;
+        border: 1px $white solid;
+        transition: all .3s;
+        &:hover{
+          background: transparent;
+        }
+      }
+    }
   }
 }
 .linkHome{
@@ -304,77 +334,6 @@ p{
 }
 .linkProd{
   margin: auto;
-}
-section{
-  position: relative;
-  z-index: 1;
-  background-color: transparent;
-}
-.back-skew{
-  position: relative;
-  padding: 100px 0;
-  background: url('../images/bg-skew.svg') no-repeat;
-  background-size: cover;
-  background-position: center;
-  z-index: 3;
-  @media (min-width:1200px) {
-    padding: 0px;
-    background-position: bottom;
-  }
-  @media (max-width:550px) {
-    &.change{
-      padding-top: 0px;
-    }
-  }
-}
-.back-top{
-  margin-top: 0px !important;
-  padding-top: 180px !important;
-}
-.back-final{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  &:before{
-    content: '';
-    position: absolute;
-    bottom: -20rem;
-    left: 0;
-    width: 100%;
-    height: 45rem;
-    background: url('../images/back-final.svg') no-repeat;
-    background-size: cover;
-    background-position: right;
-    z-index: 0;
-    @media (min-width:1700px) {
-      background-position: center;
-      height: 114%;
-      background-size: cover;
-    }
-    @media (max-width:550px) {
-      background-position: right;
-    }
-  }
-}
-.title-section{
-  margin-bottom: var(--margin-30);
-}
-.unsetPa{
-  padding: 0px 3%!important;
-}
-.margin30{
-  margin-top: var(--margin-60);
-  padding: var(--margin-30) 0;
-}
-.unsetBot{
-  padding-bottom: 0px !important;
-  margin-bottom: 30px;
-}
-.title-tabs{
-  text-align: center;
-}
-.hidden{
-  overflow: hidden;
 }
 @media (max-width:960px) {
   .cart{

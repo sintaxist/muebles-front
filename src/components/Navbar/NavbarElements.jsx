@@ -12,7 +12,7 @@ export const Header = styled.header`
   padding: 0px 3%;
   width: 94%;
   height: 80px;
-  background: #D93535;
+  background: transparent;
   &:after{
     content: '';
     background: #F9FBFF;
@@ -56,18 +56,23 @@ export const LinksMobile = styled.div`
   transition: all .5s ease;
   display: block;
   z-index: 4;
- 
-  @media(min-width: 960px){
-    position: initial;
-    margin: 0;
-    display: none;
-  }
   &.active{
     display: block;
     position: absolute;
     top: 100px;
     right: 60px;
     text-align: center;
+  }
+  @media(min-width: 960px){
+    position: initial;
+    margin: 0;
+    display: none;
+  }
+  @media(max-width: 450px){
+    left: 50%;
+    right: unset;
+    transform: translateX(-50%);
+    width: 250px;
   }
 `
 
@@ -130,6 +135,7 @@ export const LogoLink = styled(Link)`
   cursor: pointer;
   position: relative;
   z-index: 3;
+  max-width: 200px;
 `;
 
 export const Logo = styled.img`
@@ -147,6 +153,7 @@ export const Logo = styled.img`
 export const LogoMobile = styled.img`
   display: none;
   min-width: 60px;
+  max-width: 60px;
   @media(max-width:960px){
     display: block;
   }
@@ -210,14 +217,13 @@ export const Menu = styled.div`
 `
 
 export const SectionMenu = styled.div`
-  background: #F9FBFF;
   padding: 0px 0px 0px 15px;
   display: flex;
   align-items: center;
   gap: 15px;
   height: 100%;
   @media(max-width:960px){
-    background: transparent;
+    background: transparent !important;
   }
   @media(max-width:960px){
     padding: 0px;

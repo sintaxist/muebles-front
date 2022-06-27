@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
-import {Content} from './utils/UseElements';
+import {Content} from './UseElements';
 
 import { Logo, LogoMobile } from './Navbar/NavbarElements';
 
-import { getContent, urlAdmin } from './utils/httpClient';
+import { getContent, urlAdmin } from '../hooks/httpClient';
 
 export const Footer = () => {
 

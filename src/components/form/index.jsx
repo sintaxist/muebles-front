@@ -1,12 +1,12 @@
 import Axios from 'axios';
 import React, { useState } from 'react'
-import { API } from '../utils/httpClient';
+import { API } from '../../hooks/httpClient';
 import FormInput from './FormInput';
-import Loader from '../utils/loader';
+import Loader from '../loader';
 
 
 import styles from '../../styles/form.module.scss';
-import { ButtonForm, FlechaButton } from '../utils/UseElements';
+import { Button } from '../UseElements';
 
 export default function PostForm () {
 
@@ -125,10 +125,7 @@ export default function PostForm () {
             <span id='success' className={styles.success}>
                 Tu formulario se ha enviado con exito
 
-                <ButtonForm onClick={displaySuccess} className='white fill'>
-                    Volver a enviar
-                    <FlechaButton/>
-                </ButtonForm>
+                <Button onClick={displaySuccess} className='white fill'>Volver a enviar</Button>
             </span>
 
             <div id='loader' className={styles.formLoader}>
@@ -164,10 +161,7 @@ export default function PostForm () {
 
             </ul>
 
-            <ButtonForm className='purple fill'>
-                Enviar
-                <FlechaButton/>
-            </ButtonForm>
+           <Button>Enviar</Button>
 
         </form>
     )

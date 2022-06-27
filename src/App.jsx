@@ -1,18 +1,16 @@
 import React from 'react'
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Home from './components/pages';
-import { ProductDetail } from './components/pages/productDetails';
+import Home from './pages';
+import { ProductDetail } from './pages/productDetails';
 import { Footer } from './components/footer';
-import ScrollToTop from './components/utils/ScrollToTop';
+import ScrollToTop from './hooks/ScrollToTop';
 import './styles/App.scss'
-import { CategoryDetail } from './components/pages/CategoryDetail';
-import Categoria from './components/pages/categorias';
-import QuienesSomos from './components/pages/quienes-somos';
-import Faqs from './components/pages/faq';
-import Capacitate from './components/pages/capacitate';
-import Contacto from './components/pages/contacto';
-import Productos from './components/pages/productos';
+import Categoria from './pages/categorias';
+import QuienesSomos from './pages/quienes-somos';
+import Faqs from './pages/faq';
+import Contacto from './pages/contacto';
+import Productos from './pages/productos';
 import AppContext from './context/AppContext';
 import useInitialState from './hooks/useInitialState';
 
@@ -32,13 +30,12 @@ function App () {
             <Routes>
               <Route path="/" element={<Home/>}></Route>
               <Route path="producto/:productId" element={<ProductDetail />}></Route>
-              <Route path="categoria/:categoryId" element={<CategoryDetail />}></Route>
+              <Route path="catalogo/:categoryId" element={<Productos />}></Route>
               <Route path="categorias" element={<Categoria />}></Route>
               <Route path="quienes-somos" element={<QuienesSomos />}></Route>
               <Route path="contacto" element={<Contacto />}></Route>
               <Route path="clientes" element={<Categoria />}></Route>
               <Route path="faq" element={<Faqs />}></Route>
-              <Route path="capacitate" element={<Capacitate />}></Route>
               <Route path="catalogo" element={<Productos />}></Route>
             </Routes>
           </div>

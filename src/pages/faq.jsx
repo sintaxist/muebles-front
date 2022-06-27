@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 // import { Link } from 'react-router-dom';
 
-import styles from '../../styles/colapseItems.module.scss'
-import { getContent } from '../utils/httpClient';
-import { Content } from '../utils/UseElements';
+import styles from '../styles/colapseItems.module.scss'
+import { getContent } from '../hooks/httpClient';
+import { Content } from '../components/UseElements';
 
 export default function Faqs() {
 

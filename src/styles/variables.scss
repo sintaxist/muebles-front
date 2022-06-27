@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 /********* Colores *********/
 
 $white: #F9FBFF;
@@ -16,6 +17,7 @@ $gradient-3: linear-gradient(to right, $orange, $red);
 
 /************Tamaño Fuente************/
 
+$font0: 3rem;
 $font1: 2.25rem;
 $font2: 2rem;
 $font3: 1.7rem;
@@ -24,6 +26,8 @@ $font5: 1.125rem;
 $font6: 1rem;
 $font7: 0.875rem;
 $font8: 0.6rem;
+
+$style-font: 'Staatliches', cursive;
 
 $shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
 
@@ -41,6 +45,8 @@ $shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
     --font6: 1rem;
     --font7: .9rem;
     --font8: .9rem;
+
+    --fontTitle: 3rem;
 }
 
 @media (max-width:960px) {
