@@ -6,7 +6,6 @@ import { ProductDetail } from './pages/productDetails';
 import { Footer } from './components/footer';
 import ScrollToTop from './hooks/ScrollToTop';
 import './styles/App.scss'
-import Categoria from './pages/categorias';
 import QuienesSomos from './pages/quienes-somos';
 import Faqs from './pages/faq';
 import Contacto from './pages/contacto';
@@ -31,10 +30,8 @@ function App () {
               <Route path="/" element={<Home/>}></Route>
               <Route path="producto/:productId" element={<ProductDetail />}></Route>
               <Route path="catalogo/:categoryId" element={<Productos />}></Route>
-              <Route path="categorias" element={<Categoria />}></Route>
               <Route path="quienes-somos" element={<QuienesSomos />}></Route>
               <Route path="contacto" element={<Contacto />}></Route>
-              <Route path="clientes" element={<Categoria />}></Route>
               <Route path="faq" element={<Faqs />}></Route>
               <Route path="catalogo" element={<Productos />}></Route>
             </Routes>
