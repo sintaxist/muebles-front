@@ -135,7 +135,6 @@ export const LogoLink = styled(Link)`
   cursor: pointer;
   position: relative;
   z-index: 3;
-  max-width: 200px;
 `;
 
 export const Logo = styled.img`
@@ -144,7 +143,7 @@ export const Logo = styled.img`
   padding: 0rem 6%;
   height: auto;
   width: 80%;
-  max-width: 250px;
+  min-width: 160px;
   @media(max-width:960px){
     display: none;
   }
@@ -152,8 +151,7 @@ export const Logo = styled.img`
 
 export const LogoMobile = styled.img`
   display: none;
-  min-width: 60px;
-  max-width: 60px;
+  min-width: 70px;
   @media(max-width:960px){
     display: block;
   }

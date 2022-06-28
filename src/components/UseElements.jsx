@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import ReactMarkdown from 'react-markdown';
 
 export const Content = styled.div`
     position: relative;
@@ -10,98 +10,13 @@ export const Content = styled.div`
     z-index: 1;
 `;
 
-export const FlexRow = styled.ul`
+export const FlexRow = styled.div`
     display: flex;
     justify-content: space-between;
-`;
-
-export const Button = styled(Link)`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: fit-content;
-    padding: 3px 20px 3px 30px;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all .3s;
-    text-transform: uppercase;
-    font-size: 1rem;
-    border: 3px solid;
-    svg{
-        width: 45px;
-    }
-    .line{
-        display: none;
-    }
-    &:hover{
-        letter-spacing: 4px;
-        svg{
-            margin-left: 15px;
-        }
-        .line{
-            display: block;
-        }
-    }
-    @media (max-width:960px){
-        padding: 2px 10px 1px 15px;
-        font-size: .8rem;
-        &:hover{
-            letter-spacing: 2px;
-        }
-    }
-    @media (max-width:550px){
-        justify-content: center;
-        width: 94%;
-        font-size: 12px;
-        margin: auto;
-    }
-`;
-
-export const ButtonForm = styled.button`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: fit-content;
-    padding: 3px 20px 3px 30px;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all .3s;
-    text-transform: uppercase;
-    font-size: 1rem;
-    border: 3px solid;
-    svg{
-        width: 45px;
-    }
-    .line{
-        display: none;
-    }
-    &:hover{
-        letter-spacing: 4px;
-        svg{
-            margin-left: 15px;
-        }
-        .line{
-            display: block;
-        }
-    }
-    @media (max-width:960px){
-        padding: 2px 10px 1px 15px;
-        font-size: .8rem;
-        &:hover{
-            letter-spacing: 2px;
-        }
-    }
-    @media (max-width:550px){
-        justify-content: center;
-        width: 94%;
-        font-size: 12px;
-        margin: auto;
+    flex-wrap: wrap;
+    gap: 30px;
+    @media (max-width:550px) {
+        gap: 15px;
     }
 `;
 
@@ -127,4 +42,25 @@ export const CategoryContain = styled.div`
         margin: 30px 0;
         gap: 15px;
     }
+`
+
+export const MarkUp = styled(ReactMarkdown)`
+    color: #263575;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    @media (max-width:960px){
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+    @media (max-width:960px){
+        font-size: .9rem;
+        line-height: 1.2rem;
+    }
+`
+
+export const Card = styled.div`
+    background-color: #fff;
+    text-align: center;
+    padding: 30px 3%;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 13%);
 `

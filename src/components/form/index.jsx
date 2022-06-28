@@ -6,7 +6,7 @@ import Loader from '../loader';
 
 
 import styles from '../../styles/form.module.scss';
-import { Button } from '../UseElements';
+// import { Button } from '../UseElements';
 
 export default function PostForm () {
 
@@ -115,6 +115,8 @@ export default function PostForm () {
         },
     ];
 
+    console.log(displaySuccess)
+
     return (
 
         <form 
@@ -125,7 +127,7 @@ export default function PostForm () {
             <span id='success' className={styles.success}>
                 Tu formulario se ha enviado con exito
 
-                <Button onClick={displaySuccess} className='white fill'>Volver a enviar</Button>
+                {/* <Button onClick={displaySuccess} className='white fill'>Volver a enviar</Button> */}
             </span>
 
             <div id='loader' className={styles.formLoader}>
@@ -161,7 +163,7 @@ export default function PostForm () {
 
             </ul>
 
-           <Button>Enviar</Button>
+           {/* <Button>Enviar</Button> */}
 
         </form>
     )

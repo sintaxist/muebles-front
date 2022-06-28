@@ -1,6 +1,9 @@
 @import 'variables.scss';
 
-.slide{
+.firstSection {
+    position: relative;
+}
+.slide {
     width: 100vw;
     height: 70vh;
     min-height: 400px;
@@ -11,35 +14,43 @@
     flex-direction: column;
     justify-content: center;
 }
-.containerSlide{
+.containerSlide {
     margin: 0px 6%;
-    h1{
-        font-family: $style-font;
+    h1 {
+        text-align: start;
         font-size: var(--fontTitle);
         margin-bottom: var(--margin-30);
+        @media(max-width:960px) {
+            font-size: 3.5rem;
+        }
+        @media(max-width:550px) {
+            font-size: 2.5rem;
+        }
     }
 }
-.h2Slide{
-    p{
+.h2Slide {
+    p {
         color: $white;
-        font-size: var(--font3);
+        font-size: var(--font4);
+        font-weight: lighter;
     }
+    margin-bottom: var(--margin-30);
 }
-.promociones{
+.promociones {
     display: flex;
     flex-wrap: wrap;
     gap: var(--margin-30);
 }
-.imgContainer{
+.imgContainer {
     position: relative;
     overflow: hidden;
     height: 500px;
-    .imgMobile{
+    .imgMobile {
         position: absolute;
         inset: 0;
         display: none;
     }
-    img{
+    img {
         margin: auto;
         object-fit: cover;
         width: 100%;
@@ -47,40 +58,40 @@
         object-position: center;
         transition: width .3s ease-in-out, height .3s ease-in-out;
     }
-    &:hover{
-        img{
+    &:hover {
+        img {
             width: 105%;
             height: 105%;
         }
     }
 }
-.img60{
+.img60 {
     width: calc(70% - 15px);
     @media (max-width:960px) {
         width: 100%;
     }
 }
-.img30{
+.img30 {
     display: flex;
     flex-direction: column;
     gap: var(--margin-30);
     width: calc(30% - 15px);
     height: 500px;
-    .imgContainer{
+    .imgContainer {
         height: 50%;
     }
     @media (max-width:960px) {
         width: 100%;
     }
 }
-.testimonials{
+.testimonials {
     position: relative;
-    h2{
+    h2 {
         font-family: $style-font;
         text-align: center;
         font-size: var(--font2);
     }
-    &:before{
+    &:before {
         content: '';
         width: 100px;
         height: 100px;
@@ -92,19 +103,19 @@
         margin: auto;
     }
 }
-.sliderContain{
+.sliderContain {
     margin: var(--margin-60) 0px;
 }
-.review{
+.review {
     display: block;
     margin: 6%;
-    q{
+    q {
         display: block;
         font-size: var(--font5);
         text-align: center;
         margin: auto;
     }
-    span{
+    span {
         text-align: center;
         color: $orange;
         font-size: var(--font6);
@@ -112,5 +123,182 @@
         text-transform: uppercase;
         display: block;
         margin-top: var(--margin-60);
+    }
+}
+.scrollDowns {
+    position: absolute;
+    right: 0;
+    bottom: 6%;
+    left: 0;
+    margin: 0 auto 13px;
+    width: 34px;
+    height: 55px;
+}
+.mousey {
+    width: 3px;
+    padding: 6px 15px;
+    height: 40px;
+    border: 2px solid #F6F9FC;
+    border-radius: 25px;
+    opacity: 0.75;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    position: relative;
+    z-index: 2;
+}
+.scroller {
+    width: 3px;
+    height: 10px;
+    border-radius: 25%;
+    background-color: #F6F9FC;
+    -webkit-animation-name: scroll;
+    animation-name: scroll;
+    -webkit-animation-duration: 2.2s;
+    animation-duration: 2.2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+@keyframes scroll {
+    0% {
+        opacity: 0;
+        height: 3px;
+    }
+    5% {
+        opacity: .7;
+        height: 3px;
+    }
+    15% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+        height: 15px;
+    }
+    85% {
+        -webkit-transform: translateY(30px);
+        transform: translateY(30px);
+        opacity: 1;
+        height: 8px;
+    }
+    100% {
+        -webkit-transform: translateY(30px);
+        transform: translateY(30px);
+        opacity: 0;
+        height: 3px;
+    }
+}
+.containerBen{
+    background-color: #fff;
+    padding: var(--margin-60) 3% var(--margin-30);
+    position: relative;
+    &::before{
+        content: '';
+        background-color: #D93535;
+        height: 16px;
+        width: 70%;
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        transform: skewX(-35deg);
+        box-shadow: 6px 5px 16px rgba(0, 0, 0, 25%);
+    }
+    h1{
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: normal;
+        font-weight: lighter;
+        text-align: start;
+        text-transform: unset;
+        margin-bottom: var(--margin-60);
+    }
+}
+.beneficios{
+    margin: var(--margin-30) 0px;
+    @media (max-width:960px) {
+        gap: 60px !important;
+    }
+    @media (max-width:550px) {
+        gap: 30px !important;
+    }
+}
+.beneficio{
+    width: calc(50% - 15px);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    img{
+        min-width: 70px;
+    }
+    h2{
+        font-size: var(--font4);
+        text-transform: uppercase;
+        margin-bottom: var(--margin-15);
+    }
+    @media (max-width:960px) {
+        width: 100%;
+    }
+    @media (max-width:550px) {
+        gap: 15px;
+        img{
+            min-width: 50px;
+        }
+    }
+}
+.categories{
+    justify-content: space-between;
+    margin: var(--margin-30) 3%;
+    align-items: stretch;
+    @media (max-width:960px) {
+        margin: var(--margin-60) 3%;
+    }
+}
+.category{
+    flex-grow: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: $orange;
+    text-transform: uppercase;
+    position: relative;
+    transition: color .3s, box-shadow .3s;
+    width: 7%;
+    overflow: hidden;
+    h3{
+        position: relative;
+        z-index: 1;
+        font-size: var(--font5);
+    }
+    img{
+        position: relative;
+        z-index: 1;
+        min-width: 70px;
+        margin-bottom: var(--margin-30);
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        width: 120%;
+        height: 100%;
+        background: $gradient-3;
+        inset: 0;
+        z-index: 0;
+        transform-origin: top;
+        transform: scaleY(0);
+        transition: transform .3s;
+    }
+    &:hover{
+        color: $white;
+        box-shadow: 0px 0px 20px $red;
+        &:before{
+            transform: scaleY(1);
+        }
+    }
+    @media (max-width:960px) {
+        width: 20%;
+        img{
+            margin-bottom: var(--margin-60);
+        }
+    }
+    @media (max-width:550px) {
+        width: 33%;
     }
 }
