@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
-import {Content} from './utils/UseElements';
+import {Content} from './UseElements';
 
 import { Logo, LogoMobile } from './Navbar/NavbarElements';
 
-import { getContent, urlAdmin } from './utils/httpClient';
+import { getContent, urlAdmin } from '../hooks/httpClient';
 
 export const Footer = () => {
 
@@ -22,8 +22,8 @@ export const Footer = () => {
         <FooterFlex>
             <Content>
                 <Link to='/' className='logo-footer'>
-                    <Logo src={urlAdmin + content?.data?.attributes.image.data.attributes.url} alt='logo'/>
-                    <LogoMobile className='logo-mobile' src={urlAdmin + content?.data?.attributes.imgMobile.data.attributes.url} alt='logo-mobile'/>
+                    <LogoFoo src={urlAdmin + content?.data?.attributes.image.data.attributes.url} alt='logo'/>
+                    <LogoFooMob className='logo-mobile' src={urlAdmin + content?.data?.attributes.imgMobile.data.attributes.url} alt='logo-mobile'/>
                 </Link>
                 <MenuFooter>
                     {content?.data?.attributes.links.data.map(link =>(
@@ -37,7 +37,13 @@ export const Footer = () => {
         </FooterFlex>
     )
 }
-
+const LogoFoo = styled(Logo)`
+    max-width: 120px;
+    min-width: unset;
+`
+const LogoFooMob = styled(LogoMobile)`
+    min-width: 180px;
+`
 const FooterFlex = styled.footer`
     height: 24rem;
     display: flex;

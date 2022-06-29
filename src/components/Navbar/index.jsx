@@ -17,7 +17,7 @@ import {
 
 import styles from '../../styles/Header.module.scss';
 
-import { getContent, urlAdmin } from '../utils/httpClient';
+import { getContent, urlAdmin } from '../../hooks/httpClient';
 import AppContext from '../../context/AppContext'
 import { Search } from './search';
 import { Link } from 'react-router-dom';

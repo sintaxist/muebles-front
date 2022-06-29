@@ -1,0 +1,43 @@
+@import '../../styles/variables.scss';
+
+.testimonials {
+    position: relative;
+    h2 {
+        font-family: $style-font;
+        text-align: center;
+        font-size: var(--font2);
+    }
+    &:before {
+        content: '';
+        width: 100px;
+        height: 100px;
+        background: url('./comillas.svg') no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: absolute;
+        inset: 0;
+        margin: auto;
+    }
+}
+.sliderContain {
+    margin: var(--margin-60) 0px;
+}
+.review {
+    display: block;
+    margin: 6%;
+    q {
+        display: block;
+        font-size: var(--font5);
+        text-align: center;
+        margin: auto;
+    }
+    span {
+        text-align: center;
+        color: $orange;
+        font-size: var(--font6);
+        font-weight: bold;
+        text-transform: uppercase;
+        display: block;
+        margin-top: var(--margin-60);
+    }
+}
