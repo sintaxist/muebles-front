@@ -9,6 +9,7 @@ import StyledButton from './Button';
 import styles from '../styles/form.module.scss';
 import StyledTitle from './title';
 import styled from 'styled-components';
+import { WrapContennt } from './UseElements';
 
 export default function Newsletter() {
 
@@ -121,6 +122,8 @@ export default function Newsletter() {
 
         <NewContainer>
 
+            <WrapContennt>
+
             {
                 info?.show_title ? (
                     <StyledTitle title={info?.title} before={false}/>
@@ -172,6 +175,8 @@ export default function Newsletter() {
                 </form>
 
             </div>
+
+            </WrapContennt>
 
         </NewContainer>
     )

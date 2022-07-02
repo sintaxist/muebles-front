@@ -46,8 +46,6 @@ function Home() {
 
   const info = content?.data?.attributes;
 
-  // console.log(info?.Slider)
-
   return (
     <>
       <section className={styles.firstSection}>

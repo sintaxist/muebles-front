@@ -23,6 +23,11 @@ export const Header = styled.header`
     width: 25%;
     max-width: 325px;
   }
+  @media(min-width: 1800px){
+      &:after{
+        background-color: transparent;
+      }
+    }
   @media (max-width:1200px){
     &:after{
       max-width: 55px;

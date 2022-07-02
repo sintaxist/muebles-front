@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import ReactMarkdown from 'react-markdown';
 // import { Link } from 'react-router-dom';
 
 import styles from '../styles/colapseItems.module.scss'
 import { getContent } from '../hooks/httpClient';
-import { Content } from '../components/UseElements';
+import { MarkUp, PageContainer } from '../components/UseElements';
+import StyledTitle from '../components/title';
 
 export default function Faqs() {
 
@@ -19,9 +19,8 @@ export default function Faqs() {
   }
 
   const [content, setContent] = useState(null);
-  
   useEffect(() => {
-    getContent('faq?populate=titulo.show,question').then((data) => {
+    getContent('faq?populate=title,question').then((data) => {
       setContent(data)
     })
   }, [])
@@ -30,41 +29,43 @@ export default function Faqs() {
   // console.log(info)
 
   return (
-    <div className='back-final margin100'>
-      <Content>
-        {info?.titulo.show ? (
-          <h1 className={`title h1-title ${info?.titulo.color}`}>{info?.titulo.titulo}</h1>
-        ) : null}
-        <ReactMarkdown className={styles.p}>{info?.description}</ReactMarkdown>
-    
-        <div className={styles.accordion}>
-          {
-            info?.question.map((item, i) => {
-              return (
-                <div className={styles.item} key={item.id}>
+    <PageContainer>
+      {
+        info?.length > 0 ? null : (
+          <>
+            <StyledTitle title={info?.title} before={false} />
+            <MarkUp>{info?.text}</MarkUp>
 
-                  <div className={selected === i ? `${styles.active} ${styles.title}` : styles.title} onClick={() => toggle(i)}>
+            <div className={styles.accordion}>
+              {
+                info?.question.map((item, i) => {
+                  return (
+                    <div className={styles.item} key={item.id}>
 
-                    <h2 className={selected === i ? `${styles.activo} ${styles.titulo}` : styles.titulo}>
-                      {item.question}
-                    </h2>
+                      <div className={selected === i ? `${styles.active} ${styles.title}` : styles.title} onClick={() => toggle(i)}>
 
-                    <span>{selected === i ? '-' : '+'}</span>
-                  </div>
+                        <h2 className={selected === i ? `${styles.activo} ${styles.titulo}` : styles.titulo}>
+                          {item.question}
+                        </h2>
 
-                  <div className={selected === i ? `${styles.content} ${styles.show}` : styles.content}>
+                        <span>{selected === i ? '-' : '+'}</span>
+                      </div>
 
-                    <p>
-                      {item.answer}
-                    </p>
+                      <div className={selected === i ? `${styles.content} ${styles.show}` : styles.content}>
 
-                  </div>
-                </div>
-              )
-            })
-          }
-        </div>
-      </Content>
-    </div>
+                        <p>
+                          {item.answer}
+                        </p>
+
+                      </div>
+                    </div>
+                  )
+                })
+              }
+            </div>
+          </>
+        )
+      }
+    </PageContainer>
   )
 }

@@ -34,16 +34,16 @@ export default function StyledTitle({title, before}) {
     let colorTheme
 
     colors.map(dato => (
-        title.color === dato.name ? colorTheme = dato.color : null
+        title?.color === dato.name ? colorTheme = dato.color : null
     ))
 
     // console.log(title)
 
     return (
        !before ? (
-        <Title theme={{color: colorTheme}}>{title.titulo}</Title>
+        <Title theme={{color: colorTheme}}>{title?.titulo}</Title>
        ) : (
-        <TitleBefore theme={{color: colorTheme}}>{title.titulo}</TitleBefore>
+        <TitleBefore theme={{color: colorTheme}}>{title?.titulo}</TitleBefore>
        )
     );
 }

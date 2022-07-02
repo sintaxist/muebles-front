@@ -76,6 +76,13 @@ input[type="text"] {
   &:hover{
     transform: scale(1.3);
   }
+  .cross{
+    &.active{
+      path{
+        stroke: $orange;
+      }
+    }
+  }
   svg{
     position: absolute;
     inset: 0;
@@ -91,6 +98,9 @@ input[type="text"] {
     }
     &.active{
       opacity: 1;
+       path{
+        stroke: $white;
+      }
     }
   }
   @media (max-width:960px) {
@@ -103,6 +113,13 @@ input[type="text"] {
     &:hover{
       background-color: initial;
       transform: scale(1);
+    }
+    .cross{
+      &.active{
+        path{
+          stroke: $white;
+        }
+      }
     }
   }
 }

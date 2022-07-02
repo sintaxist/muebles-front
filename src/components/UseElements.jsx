@@ -12,6 +12,27 @@ export const Content = styled.div`
         margin-bottom: var(--margin-30);
     }
 `;
+export const WrapContennt = styled.div`
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+    z-index: 1;
+`
+export const PageContainer = styled.div`
+    position: relative;
+    display: block;
+    width: 94%;
+    padding: 0px 3%;
+    max-width: 1300px;
+    margin: auto;
+    margin-top: 120px;
+    z-index: 1;
+    h1{
+        margin-bottom: var(--margin-60);
+    }
+`
 export const FlexRow = styled.div`
     display: flex;
     justify-content: space-between;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import styles from '../../styles/tabs.module.scss'
-import { Content } from "./UseElements";
+import { WrapContennt } from "../UseElements";
 
 class Tabs extends Component {
   state = {
@@ -13,30 +13,11 @@ class Tabs extends Component {
   }
 
   render() {
-
-    let lastScrollTop = 0;
-
-    const chageHeader = () => {
-
-      let header = document.getElementById('tabs');
-
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > lastScrollTop) {
-        header.style.top = '-100px'
-      } else {
-        header.style.top = '81px'
-      }
-
-      lastScrollTop = scrollTop;
-    }
-
-    window.addEventListener('scroll', chageHeader);
     
     return (
-      <>
+      <WrapContennt className={styles.TabsContainer}>
 
-        <ul id='tabs' className={styles.links}>
+        <ul className={styles.links}>
           {this.props?.children?.map((elem, index) => {
             let style = index === this.state.selected ? styles.selected : "";
             return (
@@ -50,16 +31,15 @@ class Tabs extends Component {
             );
           })}
         </ul>
-
-        <Content className="margin140">
           {this.props.children == null ? null: (
             <div className={styles.tab}>{this.props.children[this.state.selected]}</div>
           )}
-        </Content>
 
-      </>
+        </WrapContennt>
     );
   }
 }
 
 export default Tabs;
+
+// @FileManager2022

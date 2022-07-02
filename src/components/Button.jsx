@@ -32,7 +32,7 @@ const colors = [
 
 export default function StyledButton({button, link, onClick}) {
 
-    let colorButton = button.color;
+    let colorButton = button?.color;
 
     let colorTheme
 
@@ -42,9 +42,9 @@ export default function StyledButton({button, link, onClick}) {
 
     return (
         link ? (
-            <Button as={Link} to={button.pathLink} theme={{ color: colorTheme, style: button.style }}>{button.titleLink}</Button>
+            <Button as={Link} to={button?.pathLink} theme={{ color: colorTheme, style: button?.style }}>{button?.titleLink}</Button>
         ) : (
-            <Button onClick={onClick} theme={{ color: colorTheme, style: button.style }}>{button.titleLink}</Button>
+            <Button onClick={onClick} theme={{ color: colorTheme, style: button?.style }}>{button?.titleLink}</Button>
         )
     );
 }
