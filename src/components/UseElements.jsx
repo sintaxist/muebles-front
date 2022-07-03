@@ -65,28 +65,59 @@ export const CategoryContain = styled.div`
     }
 `
 export const MarkUp = styled(ReactMarkdown)`
+    &:last-child{
+        margin-bottom: 150px;
+        @media (max-width:550px) {
+            margin-bottom: 100px;
+        }
+    }
     color: $black;
     font-size: 1.2rem;
     line-height: 1.7rem;
+    p{
+        margin-bottom: 15px;
+    }
+    h1,h2,h3,h4,h5,h6{
+        color: #ff0962;
+        margin: var(--margin-30) 0px;
+    }
+    h1,h2,h3{
+        margin: var(--margin-60) 0px;
+    }
+    img{
+        display: block;
+        margin: var(--margin-30) auto;
+        max-width: 400px;
+        height: auto;
+    }
     em{
-        color: #D93535;
+        color: #ff0962;
+    }
+    ol{
+        margin-top: var(--margin-30);
+        list-style-type: upper-roman;
+        list-style-position: inside;
+        padding-inline-start: 0px;
+        li{
+            font-size: var(--font6);
+            margin-bottom: 15px;
+        }
     }
     ul{
         padding-inline-start: 0px;
         margin-top: var(--margin-30);
-    }
-    li{
+        li{
         position: relative;
         margin-bottom: 15px;
         margin-left: 20px;
-        font-size: var(--font5);
+        font-size: var(--font6);
         list-style: none;
         &:before{
             display: block;
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: #D93535;
+            background-color: #ff0962;
             content: '';
             border-radius: 100px;
             left: -20px;
@@ -94,8 +125,9 @@ export const MarkUp = styled(ReactMarkdown)`
             transform: translateY(-50%);
         }
     }
+    }
     a{
-        color: #D93535;
+        color: #ff0962;
         font-weight: bold;
         position: relative;
         text-decoration: none;
@@ -105,7 +137,7 @@ export const MarkUp = styled(ReactMarkdown)`
             bottom: 0px;
             width: 100%;
             height: 2px;
-            background-color: #D93535;
+            background-color: #ff0962;
             transition: width .3s;
         }
         &:hover{

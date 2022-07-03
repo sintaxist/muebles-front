@@ -13,6 +13,7 @@ import Productos from './pages/productos';
 import AppContext from './context/AppContext';
 import useInitialState from './hooks/useInitialState';
 import ComoComprar from './pages/como-comprar';
+import AvisoPrivacidad from './pages/aviso-privacidad';
 
 function App () {
 
@@ -29,13 +30,14 @@ function App () {
           <div id="content-wrap">
             <Routes>
               <Route path="/" element={<Home/>}></Route>
-              <Route path="producto/:productId" element={<ProductDetail />}></Route>
+              <Route path="catalogo" element={<Productos />}></Route>
+              <Route path="/catalogo/:categoryName/producto/:productId" element={<ProductDetail />}></Route>
               <Route path="catalogo/:categoryId" element={<Productos />}></Route>
               <Route path="quienes-somos" element={<QuienesSomos />}></Route>
               <Route path="como-comprar" element={<ComoComprar />}></Route>
               <Route path="contacto" element={<Contacto />}></Route>
               <Route path="faq" element={<Faqs />}></Route>
-              <Route path="catalogo" element={<Productos />}></Route>
+              <Route path="aviso-privacidad" element={<AvisoPrivacidad />}></Route>
             </Routes>
           </div>
           <Footer />
