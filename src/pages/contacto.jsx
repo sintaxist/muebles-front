@@ -1,67 +1,123 @@
-import React, {useState, useEffect} from 'react';
-import { getContent } from '../hooks/httpClient';
-import { Content } from '../components/UseElements';
+import React, { useState, useEffect } from 'react';
+import { getContent, urlAdmin } from '../hooks/httpClient';
+import { MarkUp, PageContainer2 } from '../components/UseElements';
 
 import styles from '../styles/formsPage.module.scss';
 import PostForm from '../components/form';
+import StyledTitle from '../components/title';
+import Newsletter from '../components/newsletter';
+import { Link } from 'react-router-dom';
 
-export default function Contacto(){
+export default function Contacto() {
 
     const [content, setContent] = useState(null);
 
+    const [general, setGeneral] = useState(null);
+
     useEffect(() => {
-        getContent('contacto?populate=title1.show,title2.show,telefono,correo').then((data) => {
+
+        getContent('contacto?populate=*').then((data) => {
             setContent(data)
         })
+
+        getContent('info-general?populate=*').then((data) => {
+            setGeneral(data)
+        })
+
     }, [])
 
     const info = content?.data?.attributes;
 
-    // console.log(info)
+    const info2 = general?.data?.attributes;
 
-    return(
+    // const imgBack = urlAdmin + info?.img_back.data.attributes.url;
+
+    console.log(info2)
+
+    return (
         <>
-            {/* <Loader/> */}
-            <Content className='margin100'>
-                {info?.title1.show ? (
-                    <h1 className={`title h1-title ${info?.title1.color}`}>{info?.title1.titulo}</h1>
-                ):null}
-                {info?.title2.show ? (
-                    <h2 className={`title h2-title ${info?.title2.color}`}>{info?.title2.titulo}</h2>
-                ):null}
-             </Content>
-            <div className={styles.back}>
-                <Content className={styles.section2}>
-                    <div className={styles.info}>
-                        <p>{info?.description}</p>
-                        {info?.telefono.length >= 0 ? (
-                            <div className={styles.first}>
-                                <h2>Teléfono</h2>
-                                <ul>
-                                    {info?.telefono.map(numero => (
-                                        <li className={`${numero.color} li`} key={numero.id}>{numero.elemento}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ):null}
-                        {info?.correo.length >= 0 ? (
-                            <div>
-                                <h2>Correo</h2>
-                                <ul>
-                                    {info?.correo.map(correo => (
-                                        <li className={`${correo.color} li`} key={correo.id}>{correo.elemento}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ):null}
-                    </div>
-
-                    {info?.showForm ? (
-                        <PostForm/>
-                    ):null}
-                    
-                </Content>
-            </div>
+            <PageContainer2>
+                {
+                    info?.length > 0 ? null : (
+                        <>
+                            <StyledTitle title={info?.title} before={false} />
+                            <MarkUp>{info?.text}</MarkUp>
+                            {
+                                info?.show_form ? (
+                                    <div className={styles.formContainer}>
+                                        <PostForm />
+                                        <div className={styles.infoContain} style={{ backgroundImage: `url(${urlAdmin + info?.img_back.data.attributes.url})` }}>
+                                            <h2>{info.title_two.titulo}</h2>
+                                            {
+                                                info?.show_redes ? (
+                                                    <div>
+                                                        <p>Redes Sociales</p>
+                                                        <ul>
+                                                            {
+                                                                info2?.redes_sociales.map(elem => (
+                                                                    <li key={elem.id}>
+                                                                        <Link
+                                                                            to={elem.link}
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer">{elem.name}</Link>
+                                                                    </li>
+                                                                ))
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                ) : null
+                                            }
+                                            {
+                                                info?.show_numbers ? (
+                                                    <div>
+                                                        <p>Numeros</p>
+                                                        <ul>
+                                                            {
+                                                                info2?.telefonos.map(elem => (
+                                                                    <li key={elem.id}>
+                                                                        <Link
+                                                                            to={elem.telefono}
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer">{elem.telefono}</Link>
+                                                                    </li>
+                                                                ))
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                ) : null
+                                            }
+                                            {
+                                                info?.show_correo ? (
+                                                    <div>
+                                                        <p>Correos</p>
+                                                        <ul>
+                                                            {
+                                                                info2?.correo.map(elem => (
+                                                                    <li key={elem.id}>
+                                                                        <Link
+                                                                            to={elem.correo}
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer">{elem.correo}</Link>
+                                                                    </li>
+                                                                ))
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                ) : null
+                                            }
+                                        </div>
+                                    </div>
+                                ) : null
+                            }
+                        </>
+                    )
+                }
+            </PageContainer2>
+            {
+                info?.show_newsletter ? (
+                    <Newsletter />
+                ) : null
+            }
         </>
     )
 

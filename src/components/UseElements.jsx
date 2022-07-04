@@ -33,6 +33,9 @@ export const PageContainer = styled.div`
         margin-bottom: var(--margin-60);
     }
 `
+export const PageContainer2 = styled(PageContainer)`
+    margin-bottom: 120px;
+`
 export const FlexRow = styled.div`
     display: flex;
     justify-content: space-between;
@@ -65,12 +68,6 @@ export const CategoryContain = styled.div`
     }
 `
 export const MarkUp = styled(ReactMarkdown)`
-    &:last-child{
-        margin-bottom: 150px;
-        @media (max-width:550px) {
-            margin-bottom: 100px;
-        }
-    }
     color: $black;
     font-size: 1.2rem;
     line-height: 1.7rem;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MarkUp, PageContainer } from '../components/UseElements';
+import { MarkUp, PageContainer2 } from '../components/UseElements';
 import { getContent } from '../hooks/httpClient';
 import StyledTitle from '../components/title';
 
@@ -20,9 +20,9 @@ export default function AvisoPrivacidad() {
             color: 'red',
     }
     return (
-        <PageContainer>
+        <PageContainer2>
             <StyledTitle title={titleAviso} before={false} />
             <MarkUp>{info?.text}</MarkUp>
-        </PageContainer>
+        </PageContainer2>
     )
 }
